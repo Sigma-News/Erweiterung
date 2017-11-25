@@ -19,11 +19,12 @@ function formatParams( params ){
 function getStats(){
         var request = new XMLHttpRequest();
         request.open('GET', 'http://10.23.41.199:8081/stats', true);
-
+        var res = {};
         request.onload = function() {
           if (request.status >= 200 && request.status < 400) {
             var data = JSON.parse(request.responseText);
-            return {upv: data.up, dow: data.down};
+            res.upv = parseInt(data.up);
+            res.dow = parseInt(data.down);
           } else {
             // We reached our target server, but it returned an error
 
@@ -36,11 +37,14 @@ function getStats(){
 
         request.send();
 
+        console.log(res);
+        return res;
   }
 
 function sendVote(vote, Url){
         var request = new XMLHttpRequest();
-        request.open('GET', 'http://10.23.41.199:8081/vote' + formatParams({link: Url, vote: vote}), true);
+
+        request.open('GET', 'http://10.23.41.199:8081/vote' + formatParams({link: Url, vote: vote}), false);
 
         request.onload = function() {
           if (request.status >= 200 && request.status < 400) {
@@ -62,48 +66,55 @@ function sendVote(vote, Url){
 
 
 function bestaetigen() {
-    if (!(stat === "status=marked")) {
-        sendVote(1, tablink);
+   
         var stats = getStats();
-        sumpro = "Positiv: " + Math.round(stats.up/(stats.up + stats.down) * 100) + "%";
+        console.log(stats.upv);
+        setTimeout(function(){
+        if (!(stat === "status=marked")) {
+        sendVote(1, tablink);
+        sumpro = "Positiv: " + Math.round(stats.upv/(stats.upv + stats.dow) * 100) + "%";
         document.getElementById("sumpro").innerHTML = sumpro;
-        sumcon = "Negativ: " + Math.round(stats.down/(pro + con) * 100) + "%";
+        sumcon = "Negativ: " + Math.round(stats.dow/(stats.upv + stats.dow) * 100) + "%";
         document.getElementById("sumcon").innerHTML = sumcon;
         document.cookie = "status = marked";
         document.getElementById("confirmButton").setAttribute("disabled", "disabled");
         document.getElementById("reportButton").setAttribute("disabled", "disabled");
     } else {
-        p
-        sumpro = "Positiv: " + Math.round(pro/(pro + con) * 100) + "%";
+        sumpro = "Positiv: " + Math.round(stats.upv/(stats.upv + stats.dow) * 100) + "%";
         document.getElementById("sumpro").innerHTML = sumpro;
-        sumcon = "Negativ: " + Math.round(con/(pro + con) * 100) + "%";
+        sumcon = "Negativ: " + Math.round(stats.dow/(stats.upv + stats.dow) * 100) + "%";
         document.getElementById("sumcon").innerHTML = sumcon;
         document.getElementById("forbidden").removeAttribute("hidden");
         document.getElementById("confirmButton").setAttribute("disabled", "disabled");
         document.getElementById("reportButton").setAttribute("disabled", "disabled");
     }
+
+        },500)
+        
 }
 
 function report() {
-    if (!(stat === "status=marked")) {
+        var stats = getStats();
+        setTimeout(function(){
+        if (!(stat === "status=marked")) {
         sendVote(0, tablink);
-        sumpro = "Positiv: " + Math.round(pro/(pro + con) * 100) + "%";
+        sumpro = "Positiv: " + Math.round(stats.upv/(stats.upv + stats.dow) * 100) + "%";
         document.getElementById("sumpro").innerHTML = sumpro;
-        sumcon = "Negativ: " + Math.round(con/(pro + con) * 100) + "%";
+        sumcon = "Negativ: " + Math.round(stats.dow/(stats.upv + stats.dow) * 100) + "%";
         document.getElementById("sumcon").innerHTML = sumcon;
         document.cookie = "status = marked";
         document.getElementById("confirmButton").setAttribute("disabled", "disabled");
         document.getElementById("reportButton").setAttribute("disabled", "disabled");
     } else {
-        con++;
-        sumpro = "Positiv: " + Math.round(pro/(pro + con) * 100) + "%";
+        sumpro = "Positiv: " + Math.round(stats.upv/(stats.upv + stats.dow) * 100) + "%";
         document.getElementById("sumpro").innerHTML = sumpro;
-        sumcon = "Negativ: " + Math.round(con/(pro + con) * 100) + "%";
+        sumcon = "Negativ: " + Math.round(stats.dow/(stats.upv + stats.dow) * 100) + "%";
         document.getElementById("sumcon").innerHTML = sumcon;
         document.getElementById("forbidden").removeAttribute("hidden");
         document.getElementById("confirmButton").setAttribute("disabled", "disabled");
         document.getElementById("reportButton").setAttribute("disabled", "disabled");
     }
+        }, 500)
 }
 
 document.addEventListener('DOMContentLoaded', function () {
