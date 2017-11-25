@@ -5,12 +5,12 @@ var stat = document.cookie;
 
 function getStats(){
         var request = new XMLHttpRequest();
-        request.open('GET', '10.23.41.199:8081/stats', true);
+        request.open('GET', 'http://10.23.41.199:8081/stats', true);
 
         request.onload = function() {
           if (request.status >= 200 && request.status < 400) {
             var data = JSON.parse(request.responseText);
-            console.log(data.Message[0]);
+            console.log(data.Message);
           } else {
             // We reached our target server, but it returned an error
 
@@ -26,11 +26,11 @@ function getStats(){
   }
 
 
-   getStats();
+getStats();
 
 function bestaetigen() {
     if (!(stat === "status=marked")) {
-        getStats();
+ 
         pro++;
         sumpro = "Positiv: " + Math.round(pro/(pro + con) * 100) + "%";
         document.getElementById("sumpro").innerHTML = sumpro;
@@ -49,7 +49,7 @@ function bestaetigen() {
 
 function report() {
     if (!(stat === "status=marked")) {
-        getStats();
+      
         con++;
         sumpro = "Positiv: " + Math.round(pro/(pro + con) * 100) + "%";
         document.getElementById("sumpro").innerHTML = sumpro;
