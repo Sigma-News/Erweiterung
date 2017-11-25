@@ -4,6 +4,6 @@
  "version": "1.0",
  "permissions": ["tabs", "http://*/", "background"],
  "backround_page": "background.html"
- "content_scripts": [{"matches": ["http://*/*"], "js": ["popup.js"]}],
+ "content_scripts": [{"matches": ["http://*/*"], "js": ["popup.js"], "js":["background.js"]}],
  "browser_action": {"Ex_Icon": "16x16.png","popup": "popup.html"}
  }
