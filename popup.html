@@ -1,0 +1,56 @@
+<html>
+	<style>
+   .btn-small {
+    padding: 0 0.5rem;
+  }
+	body {
+		background-color: #e3f2fd;
+    min-width: 300px;
+    min-height: 200px;
+    font-family: Roboto;
+	}
+  #propaganda{
+    font-size: 20;
+    padding-right: 15px;
+  }
+  .sum{
+    font-size: 20px;
+  }
+  #forbidden{
+    color: red;
+    font-size: 16px;
+  }
+	</style>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"                   media="screen,projection"/>
+
+ <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+ <script type="text/javascript" src="js/materialize.min.js"></script>
+       
+    <head>
+        <title>Sigma-News</title>
+        <link rel="shortcut icon" type="image/x-icon"
+        <script src="popup.js"></script>
+    </head>
+    <body>
+      <br>
+      <div class="center-align">
+       <blockquote class="language-markup" id="propaganda"><b>Vertrauen sie sich nicht, vertrauen sie Sigma-News!</b></blockquote>
+       <a hidden id="forbidden" hidden><b>Du hast schon abgestimmt!</b></a>
+       <br>
+       <br>
+       <br>
+        <a class="waves-effect waves-light btn btn-small" id="confirmButton">Vertrauensw&uuml;rdig</a>
+        <br>
+        <br>
+        <a class="waves-effect waves-light btn btn-small" id="reportButton">Verd&auml;chtig</a>
+        <p hidden id="caller">  <b>Die Anderen haben so abgestimmt: </b></p>
+        <b><p class="sum" id='sumpro'></p></b>
+        <b><p class="sum" id='sumcon'></p></b>
+        <script language="javascript" type="text/javascript" src="popup.js"></script>
+        <button id="CookieButton">Reset Cookie</button> 
+      </div>
+    </body>
+</html>
