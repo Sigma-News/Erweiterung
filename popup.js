@@ -3,46 +3,67 @@ var con = 0;
 var sum = 0;
 var stat = document.cookie;
 
+function getStats(){
+        var request = new XMLHttpRequest();
+        request.open('GET', '10.23.41.199:8081/stats', true);
+
+        request.onload = function() {
+          if (request.status >= 200 && request.status < 400) {
+            var data = JSON.parse(request.responseText);
+            console.log(data.Message[0]);
+          } else {
+            // We reached our target server, but it returned an error
+
+          }
+        };
+
+        request.onerror = function() {
+          // There was a connection error of some sort
+        };
+
+        request.send();
+
+  }
+
+
+   getStats();
+
 function bestaetigen() {
     if (!(stat === "status=marked")) {
+        getStats();
         pro++;
         sumpro = "Positiv: " + Math.round(pro/(pro + con) * 100) + "%";
         document.getElementById("sumpro").innerHTML = sumpro;
         sumcon = "Negativ: " + Math.round(con/(pro + con) * 100) + "%";
         document.getElementById("sumcon").innerHTML = sumcon;
         document.cookie = "status = marked";
-        stat = document.cookie
     } else {
         pro++;
         sumpro = "Positiv: " + Math.round(pro/(pro + con) * 100) + "%";
         document.getElementById("sumpro").innerHTML = sumpro;
         sumcon = "Negativ: " + Math.round(con/(pro + con) * 100) + "%";
         document.getElementById("sumcon").innerHTML = sumcon;
-        document.cookie = "status = marked";
         document.getElementById("forbidden").removeAttribute("hidden");
-        document.cookie = "status=marked"
     }
 }
 
 function report() {
     if (!(stat === "status=marked")) {
+        getStats();
         con++;
         sumpro = "Positiv: " + Math.round(pro/(pro + con) * 100) + "%";
         document.getElementById("sumpro").innerHTML = sumpro;
         sumcon = "Positiv: " + Math.round(con/(pro + con) * 100) + "%";
         document.getElementById("sumcon").innerHTML = sumcon;
         document.cookie = "status = marked";
-        stat = document.cookie
+       stat = "status=marked";
     } else {
         con++;
         sumpro = "Positiv: " + Math.round(pro/(pro + con) * 100) + "%";
         document.getElementById("sumpro").innerHTML = sumpro;
         sumcon = "Positiv: " + Math.round(con/(pro + con) * 100) + "%";
         document.getElementById("sumcon").innerHTML = sumcon;
-        document.cookie = "status = marked";
-        stat = document.cookie
         document.getElementById("forbidden").removeAttribute("hidden");
-        document.cookie = "status=marked"
     }
 }
 

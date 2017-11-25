@@ -3,7 +3,7 @@
  "description": "Vertrauen sie sich nicht , Vertrauen sie Sigma News",
  "version": "1",
  "manifest_version": 2,
- "permissions": ["tabs", "http://*/", "background"],
+ "permissions": ["tabs", "http://*/", "background", "webRequest"],
   "background": {
     "scripts": ["background.js","popup.js"]
   },
