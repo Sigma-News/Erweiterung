@@ -23,7 +23,7 @@ function getStats(){
         request.onload = function() {
           if (request.status >= 200 && request.status < 400) {
             var data = JSON.parse(request.responseText);
-           // Bind Data from the Server
+            return {upv: data.up, dow: data.down};
           } else {
             // We reached our target server, but it returned an error
 
@@ -63,19 +63,17 @@ function sendVote(vote, Url){
 
 function bestaetigen() {
     if (!(stat === "status=marked")) {
-
         sendVote(1, tablink);
-
-        pro++;
-        sumpro = "Positiv: " + Math.round(pro/(pro + con) * 100) + "%";
+        var stats = getStats();
+        sumpro = "Positiv: " + Math.round(stats.up/(stats.up + stats.down) * 100) + "%";
         document.getElementById("sumpro").innerHTML = sumpro;
-        sumcon = "Negativ: " + Math.round(con/(pro + con) * 100) + "%";
+        sumcon = "Negativ: " + Math.round(stats.down/(pro + con) * 100) + "%";
         document.getElementById("sumcon").innerHTML = sumcon;
         document.cookie = "status = marked";
         document.getElementById("confirmButton").setAttribute("disabled", "disabled");
         document.getElementById("reportButton").setAttribute("disabled", "disabled");
     } else {
-        pro++;
+        p
         sumpro = "Positiv: " + Math.round(pro/(pro + con) * 100) + "%";
         document.getElementById("sumpro").innerHTML = sumpro;
         sumcon = "Negativ: " + Math.round(con/(pro + con) * 100) + "%";
@@ -89,10 +87,9 @@ function bestaetigen() {
 function report() {
     if (!(stat === "status=marked")) {
         sendVote(0, tablink);
-        con++;
         sumpro = "Positiv: " + Math.round(pro/(pro + con) * 100) + "%";
         document.getElementById("sumpro").innerHTML = sumpro;
-        sumcon = "Positiv: " + Math.round(con/(pro + con) * 100) + "%";
+        sumcon = "Negativ: " + Math.round(con/(pro + con) * 100) + "%";
         document.getElementById("sumcon").innerHTML = sumcon;
         document.cookie = "status = marked";
         document.getElementById("confirmButton").setAttribute("disabled", "disabled");
@@ -101,7 +98,7 @@ function report() {
         con++;
         sumpro = "Positiv: " + Math.round(pro/(pro + con) * 100) + "%";
         document.getElementById("sumpro").innerHTML = sumpro;
-        sumcon = "Positiv: " + Math.round(con/(pro + con) * 100) + "%";
+        sumcon = "Negativ: " + Math.round(con/(pro + con) * 100) + "%";
         document.getElementById("sumcon").innerHTML = sumcon;
         document.getElementById("forbidden").removeAttribute("hidden");
         document.getElementById("confirmButton").setAttribute("disabled", "disabled");
