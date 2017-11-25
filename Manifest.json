@@ -1,0 +1,9 @@
+{
+ "name": "Sigma News",
+ "description": "Vertrauen sie sich nicht , Vertrauen sie Sigma News",
+ "version": "1.0",
+ "permissions": ["tabs", "http://*/", "background"],
+ "backround_page": "background.html"
+ "content_scripts": [{"matches": ["http://*/*"], "js": ["inject.js"]}],
+ "browser_action": {"default_icon": "16x16.png","popup": "popup.html"}
+ }
