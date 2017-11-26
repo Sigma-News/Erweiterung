@@ -30,7 +30,7 @@ function getCookie(name) {
 // get Statistics for the page
 function getStats() {
         var request = new XMLHttpRequest();
-        request.open('GET', 'http://localhost:8081/stats', true);
+        request.open('GET', 'http://10.23.41.199:8081/stats', true);
         var res = {};
         request.onload = function() {
             if (request.status >= 200 && request.status < 400) {
@@ -55,7 +55,7 @@ function getStats() {
     // send Voting Request
 function sendVote(vote, Url) {
     var request = new XMLHttpRequest();
-    request.open('GET', 'http://localhost:8081/vote' + formatParams({
+    request.open('GET', 'http://10.23.41.199:8081/vote' + formatParams({
         link: Url,
         vote: vote
     }), true);
