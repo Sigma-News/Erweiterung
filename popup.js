@@ -91,7 +91,7 @@ function bestaetigen() {
                             label: "Abstimmung",
                             backgroundColor: ['#ECF0F1', '#2C3E50'],
 
-                            data: [35, 70]
+                            data: [Math.round(stats.upv / (stats.dow + stats.upv) * 100), Math.round(stats.dow / (stats.dow + stats.upv) * 100)]
                         }]
                     },
                     options: {
@@ -127,7 +127,7 @@ function bestaetigen() {
                         datasets: [{
                             label: "Abstimmung",
                             backgroundColor: ['#ECF0F1', '#2C3E50'],
-                            data: [35, 70]
+                            data: [Math.round(stats.upv / (stats.dow + stats.upv) * 100), Math.round(stats.dow / (stats.dow + stats.upv) * 100)]
                         }]
                     },
                     options: {
@@ -178,7 +178,7 @@ function report() {
                     datasets: [{
                         label: "Abstimmung",
                          backgroundColor: ['#ECF0F1', '#2C3E50'],
-                        data: [35, 70]
+                        data: [Math.round(stats.upv / (stats.dow + stats.upv) * 100), Math.round(stats.dow / (stats.dow + stats.upv) * 100)]
                     }]
                 },
                 options: {
@@ -215,7 +215,7 @@ function report() {
                     datasets: [{
                         label: "Abstimmung",
                         backgroundColor: ['#ECF0F1', '#2C3E50'],
-                        data: [35, 70]
+                        data: [Math.round(stats.upv / (stats.dow + stats.upv) * 100), Math.round(stats.dow / (stats.dow + stats.upv) * 100)]
                     }]
                 },
                 options: {
