@@ -112,7 +112,9 @@ function bestaetigen() {
                         }
                     }
                 });
+                // fading the 1. background, 2. Blockquote, 3. Warning
                 stats.upv < stats.dow ? document.body.classList.add("redC") : document.body.classList.add("greenC");
+                stats.upv < stats.dow ? null : document.querySelector('blockquote').classList.add("blockquote_a");
                 stats.upv < stats.dow ?document.querySelector('#forbidden').classList.add("forbiddenR") : null;   
                 document.cookie = "status = marked;"
                 document.getElementById("confirmButton").setAttribute("disabled", "disabled");
@@ -146,8 +148,10 @@ function bestaetigen() {
                         }
                     }
                 });
+               // fading the 1. background, 2. Blockquote, 3. Warning
                 stats.upv < stats.dow ? document.body.classList.add("redC") : document.body.classList.add("greenC");
-                stats.upv < stats.dow ?document.querySelector('#forbidden').classList.add("forbiddenR") : null;   
+                stats.upv < stats.dow ? null : document.querySelector('blockquote').classList.add("blockquote_a");
+                stats.upv < stats.dow ?document.querySelector('#forbidden').classList.add("forbiddenR") : null;      
                 document.getElementById("forbidden").removeAttribute("hidden");
                 document.getElementById("confirmButton").setAttribute("disabled", "disabled");
                 document.getElementById("reportButton").setAttribute("disabled", "disabled");
@@ -195,7 +199,9 @@ function report() {
                     }
                 }
             });
+            // fading the 1. background, 2. Blockquote, 3. Warning
             stats.upv < stats.dow ? document.body.classList.add("redC") : document.body.classList.add("greenC");
+            stats.upv < stats.dow ? null : document.querySelector('blockquote').classList.add("blockquote_a");
             stats.upv < stats.dow ?document.querySelector('#forbidden').classList.add("forbiddenR") : null;   
             document.cookie = "status = marked;"
             document.getElementById("confirmButton").setAttribute("disabled", "disabled");
@@ -230,8 +236,10 @@ function report() {
                     }
                 }
             });
+            // fading the 1. background, 2. Blockquote, 3. Warning
             stats.upv < stats.dow ? document.body.classList.add("redC") : document.body.classList.add("greenC");
-            stats.upv < stats.dow ?document.querySelector('#forbidden').classList.add("forbiddenR") : null;    
+            stats.upv < stats.dow ? null : document.querySelector('blockquote').classList.add("blockquote_a");
+            stats.upv < stats.dow ?document.querySelector('#forbidden').classList.add("forbiddenR") : null;   
             document.getElementById("forbidden").removeAttribute("hidden");
             document.getElementById("confirmButton").setAttribute("disabled", "disabled");
             document.getElementById("reportButton").setAttribute("disabled", "disabled");

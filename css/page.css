@@ -1,0 +1,43 @@
+body {
+        background-color: #2C3E50;
+        transition: background-color 1000ms linear;
+        min-width: 350px;
+        min-height: 200px;
+        font-family: Roboto;
+    }
+    #confirmButton, #reportButton {
+        color: #000000;
+    }
+    #propaganda {
+        font-size: 20;
+        padding-right: 20px;
+        color: #fff;
+    }
+    #forbidden {
+        color: #FF6138;
+        font-size: 16px;
+    }
+    .forbiddenR{
+      color: #000 !important;
+    }
+    .greenC {
+        background-color: #2980B9;
+    }
+    .redC {
+        background-color: #E74C3C;
+    }
+    .smaller {
+        box-sizing: border-box;
+        padding: 10px;
+        padding-top: 20px;
+        padding-right: 25px;
+    }
+    blockquote {
+      margin: 20px 0;
+      padding-left: 1.5rem;
+      border-left: 8px solid #3498DB !important;
+      transition: border-left 1000ms linear;
+    }
+    .blockquote_a{
+        border-left: 8px solid #2C3E50 !important;
+    }
