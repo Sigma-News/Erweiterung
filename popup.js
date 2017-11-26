@@ -89,7 +89,7 @@ function bestaetigen() {
                         labels: ["Positiv", "Negativ"],
                         datasets: [{
                             label: "Abstimmung",
-                            backgroundColor: ['#2C3E50', '#ECF0F1'],
+                            backgroundColor: ['#ECF0F1', '#2C3E50'],
 
                             data: [35, 70]
                         }]
@@ -113,6 +113,7 @@ function bestaetigen() {
                     }
                 });
                 stats.upv < stats.dow ? document.body.classList.add("redC") : document.body.classList.add("greenC");
+                stats.upv < stats.dow ?document.querySelector('#forbidden').classList.add("forbiddenR") : null;   
                 document.cookie = "status = marked;"
                 document.getElementById("confirmButton").setAttribute("disabled", "disabled");
                 document.getElementById("reportButton").setAttribute("disabled", "disabled");
@@ -123,7 +124,7 @@ function bestaetigen() {
                         labels: ["Positiv", "Negativ"],
                         datasets: [{
                             label: "Abstimmung",
-                            backgroundColor: ['#2C3E50', '#ECF0F1'],
+                            backgroundColor: ['#ECF0F1', '#2C3E50'],
                             data: [35, 70]
                         }]
                     },
@@ -146,6 +147,7 @@ function bestaetigen() {
                     }
                 });
                 stats.upv < stats.dow ? document.body.classList.add("redC") : document.body.classList.add("greenC");
+                stats.upv < stats.dow ?document.querySelector('#forbidden').classList.add("forbiddenR") : null;   
                 document.getElementById("forbidden").removeAttribute("hidden");
                 document.getElementById("confirmButton").setAttribute("disabled", "disabled");
                 document.getElementById("reportButton").setAttribute("disabled", "disabled");
@@ -171,7 +173,7 @@ function report() {
                     labels: ["Positiv", "Negativ"],
                     datasets: [{
                         label: "Abstimmung",
-                         backgroundColor: ['#2C3E50', '#ECF0F1'],
+                         backgroundColor: ['#ECF0F1', '#2C3E50'],
                         data: [35, 70]
                     }]
                 },
@@ -194,6 +196,7 @@ function report() {
                 }
             });
             stats.upv < stats.dow ? document.body.classList.add("redC") : document.body.classList.add("greenC");
+            stats.upv < stats.dow ?document.querySelector('#forbidden').classList.add("forbiddenR") : null;   
             document.cookie = "status = marked;"
             document.getElementById("confirmButton").setAttribute("disabled", "disabled");
             document.getElementById("reportButton").setAttribute("disabled", "disabled");
@@ -205,8 +208,7 @@ function report() {
                     labels: ["Positiv", "Negativ"],
                     datasets: [{
                         label: "Abstimmung",
-                         backgroundColor: ['#2C3E50', '#ECF0F1'],
-
+                        backgroundColor: ['#ECF0F1', '#2C3E50'],
                         data: [35, 70]
                     }]
                 },
