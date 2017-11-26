@@ -95,6 +95,13 @@ function bestaetigen() {
                         }]
                     },
                     options: {
+                        tooltips: {
+                        callbacks: {
+                            label: function(tooltipItem, chart){
+                                return tooltipItem.index == 0 ? stats.upv : stats.dow;
+                            },
+                        }
+                    },
                         scales: {
                             xAxes: [{
                                 ticks: {
@@ -131,6 +138,13 @@ function bestaetigen() {
                         }]
                     },
                     options: {
+                        tooltips: {
+                        callbacks: {
+                            label: function(tooltipItem, chart){
+                                return tooltipItem.index == 0 ? stats.upv : stats.dow;
+                            },
+                        }
+                    },
                         scales: {
                             xAxes: [{
                                 ticks: {
@@ -182,6 +196,13 @@ function report() {
                     }]
                 },
                 options: {
+                    tooltips: {
+                        callbacks: {
+                            label: function(tooltipItem, chart){
+                                return tooltipItem.index == 0 ? stats.upv : stats.dow;
+                            },
+                        }
+                    },
                     scales: {
                         xAxes: [{
                             ticks: {
@@ -219,6 +240,13 @@ function report() {
                     }]
                 },
                 options: {
+                    tooltips: {
+                        callbacks: {
+                            label: function(tooltipItem, chart){
+                                return tooltipItem.index == 0 ? stats.upv : stats.dow;
+                            },
+                        }
+                    },
                     scales: {
                         xAxes: [{
                             ticks: {
